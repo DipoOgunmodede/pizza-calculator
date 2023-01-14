@@ -1,0 +1,108 @@
+<!-- body template -->
+<html>
+  <head>
+    <title>Pizza Per Square Inch</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- generate markup with input placeholder text, number fields for all inputs -->
+    <div>
+      <label for="pizza1Size">Pizza 1 Size</label>
+      <input
+        type="number"
+        id="pizza1Size"
+        placeholder="Enter pizza 1 size in inches"
+      />
+    </div>
+    <div>
+      <label for="pizza1Price">Pizza 1 Price</label>
+      <input
+        type="number"
+        id="pizza1Price"
+        placeholder="Enter pizza 1 price in £"
+      />
+    </div>
+    <div>
+      <label for="pizza2Size">Pizza 2 Size</label>
+      <input
+        type="number"
+        id="pizza2Size"
+        placeholder="Enter pizza 2 size in inches"
+      />
+    </div>
+    <div>
+      <label for="pizza2Price">Pizza 2 Price</label>
+      <input
+        type="number"
+        id="pizza2Price"
+        placeholder="Enter pizza 2 price in £"
+      />
+    </div>
+    <div>
+      <button onclick="calculatePizzaPerSquareInch()">Calculate</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  function calculatePizzaPerSquareInch() {
+    var pizza1Size = document.getElementById("pizza1Size").value;
+    var pizza1Price = document.getElementById("pizza1Price").value;
+    var pizza2Size = document.getElementById("pizza2Size").value;
+    var pizza2Price = document.getElementById("pizza2Price").value;
+    //pizzas are circle, round pizzapersquare inch to two decimal places. alert showing which pizza is better value and show their price per square inch
+    var pizza1PerSquareInch = (
+      pizza1Price /
+      (Math.PI * (pizza1Size / 2) * (pizza1Size / 2))
+    ).toFixed(2);
+    var pizza2PerSquareInch = (
+      pizza2Price /
+      (Math.PI * (pizza2Size / 2) * (pizza2Size / 2))
+    ).toFixed(2);
+    if (pizza1PerSquareInch < pizza2PerSquareInch) {
+      //alert and show both prices per square inch, and also which is better value. Less money per square inch is better value
+      alert(
+        "Pizza 1 is better value at £" +
+          pizza1PerSquareInch +
+          " per square inch. Pizza 2 is £" +
+          pizza2PerSquareInch +
+          " per square inch."
+      );
+    } else if (pizza1PerSquareInch > pizza2PerSquareInch) {
+      alert(
+        "Pizza 2 is better value at £" +
+          pizza2PerSquareInch +
+          " per square inch. Pizza 1 is £" +
+          pizza1PerSquareInch +
+          " per square inch."
+      );
+    } else {
+      alert(
+        "Both pizzas are the same price per square inch at £" +
+          pizza1PerSquareInch +
+          " per square inch."
+      );
+    }
+  }
+</script>
+
+<style>
+  body {
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+  }
+  div {
+    margin-bottom: 10px;
+  }
+  label {
+    width: 100px;
+  }
+  input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 24px;
+  }
+</style>
